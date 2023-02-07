@@ -1,0 +1,4 @@
+node lexer.js "123 abc"
+
+[pt-br] 2.6.5 Um Analisador Léxico
+[en] 2.6 Lexical Analysis
