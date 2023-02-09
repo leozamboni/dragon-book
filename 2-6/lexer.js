@@ -6,10 +6,10 @@ import { Token } from "./token.js";
 class Lexer {
   line = 1;
   peek = " ";
-  words = [];
+  words = new Map();
   index = 0;
   reserve(t) {
-    this.words.push(t);
+    this.words.set(t.lexeme, t);
   }
   constructor() {
     this.reserve(new Word(Tag.TRUE, "true"));
@@ -35,7 +35,9 @@ class Lexer {
         s += this.peek;
         this.peek = process.argv[2][this.index++];
       } while (this.peek && /[a-zA-Z0-9]/.test(this.peek));
-      return new Word(Tag.ID, s);
+      const w = new Word(Tag.ID, s);
+      this.words.set(s, w);
+      return w;
     }
     let t = new Token(this.peek);
     this.peek = " ";
@@ -47,3 +49,4 @@ const lexer = new Lexer();
 while (lexer.index < process.argv[2].length) {
   console.log(lexer.scan());
 }
+console.log(lexer.words);
