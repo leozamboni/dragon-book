@@ -1,3 +1,9 @@
+/* 
+  node env.js
+
+  [pt-br] Figura 2.37 A classe Env implementa tabelas de símbolos encadeadas.
+  [en] Figure 2.37: Class Env implements chained symbol tables 
+*/
 class Env {
   table;
   prev;
