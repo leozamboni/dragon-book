@@ -7,7 +7,7 @@ export class Unary extends Op {
     super(tok, null);
     this.expr = x;
     this.type = new Type().max(new Type().Int, this.expr.type);
-    if (this.type === null) console.error("type error");
+    if (this.type === null) this.error("type error");
   }
   gen() {
     return new Unary(this.op, this.expr.reduce());

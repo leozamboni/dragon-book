@@ -9,7 +9,7 @@ export class Arith extends Op {
     this.expr1 = x1;
     this.expr2 = x2;
     this.type = new Type().max(this.expr1.type, this.expr2.type);
-    if (this.type === null) console.error("type error");
+    if (this.type === null) this.error("type error");
   }
   gen() {
     return new Arith(op, this.expr1.reduce(), this.expr2.reduce());

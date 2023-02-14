@@ -10,7 +10,7 @@ export class Logical extends Expr {
     this.expr1 = x1;
     this.expr2 = x2;
     this.type = this.check(this.expr1.type, this.expr2.type);
-    if (this.type === null) console.error("type error");
+    if (this.type === null) this.error("type error");
   }
   check(p1, p2) {
     if (p1 === new Type().Bool && p2 === new Type().Bool)
