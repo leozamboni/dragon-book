@@ -1,7 +1,7 @@
-import { Type } from "../symbols/type";
-import { Stmt } from "./stmt";
+import { Type } from "../symbols/type.js";
+import { Stmt } from "./stmt.js";
 
-export class Else extends Stmt {
+export class Else extends Stmt.Stmt {
   expr;
   stmt1;
   stmt2;

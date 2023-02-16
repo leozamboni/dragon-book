@@ -1,6 +1,6 @@
-import { Stmt } from "./stmt";
+import { Stmt } from "./stmt.js";
 
-export class Seq extends Stmt {
+export class Seq extends Stmt.Stmt {
   stmt1;
   stmt2;
   constructor(s1, s2) {

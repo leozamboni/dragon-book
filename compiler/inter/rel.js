@@ -1,5 +1,5 @@
-import { Type } from "../symbols/type";
-import { Logical } from "./logical";
+import { Type } from "../symbols/type.js";
+import { Logical } from "./logical.js";
 
 export class Rel extends Logical {
   constructor(tok, x1, x2) {

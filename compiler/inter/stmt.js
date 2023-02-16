@@ -1,9 +1,15 @@
-import { Node } from "./node";
+import { Node } from "./node.js";
 
-export class Stmt extends Node {
-  constructor() {}
-  Null = new Stmt();
+class StmtObj extends Node {
+  constructor() {
+    super();
+  }
   gen(b, a) {}
   after = 0;
-  Enclosing = new Stmt().Null;
 }
+
+export const Stmt = {
+  Stmt: StmtObj,
+  Null: new StmtObj(),
+  Enclosing: new StmtObj(),
+};

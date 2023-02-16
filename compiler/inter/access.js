@@ -1,6 +1,6 @@
-import { Tag } from "../lexer/tag";
-import { Word } from "../lexer/word";
-import { Op } from "./op";
+import { Tag } from "../lexer/tag.js";
+import { Word } from "../lexer/word.js";
+import { Op } from "./op.js";
 
 export class Access extends Op {
   array;

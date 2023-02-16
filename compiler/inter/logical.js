@@ -1,6 +1,6 @@
-import { Type } from "../symbols/type";
-import { Expr } from "./expr";
-import { Temp } from "./temp";
+import { Type } from "../symbols/type.js";
+import { Expr } from "./expr.js";
+import { Temp } from "./temp.js";
 
 export class Logical extends Expr {
   expr1;

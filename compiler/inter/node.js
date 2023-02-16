@@ -1,4 +1,4 @@
-import { Lexer } from "../lexer/lexer";
+import { Lexer } from "../lexer/lexer.js";
 
 export class Node {
   lexline = 0;

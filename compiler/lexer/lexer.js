@@ -1,8 +1,8 @@
-import { Num } from "./num";
-import { Real } from "./real";
+import { Num } from "./num.js";
+import { Real } from "./real.js";
 import { Tag } from "./tag.js";
 import { Token } from "./token.js";
-import { Type } from "../symbols/type";
+import { Type } from "../symbols/type.js";
 import { Word } from "./word.js";
 
 export class Lexer {
@@ -14,27 +14,30 @@ export class Lexer {
     this.words.set(w.lexeme, w);
   }
   constructor() {
-    this.reserve(new Word("if", Tag.IF));
-    this.reserve(new Word("else", Tag.ELSE));
-    this.reserve(new Word("while", Tag.WHILE));
-    this.reserve(new Word("do", Tag.DO));
-    this.reserve(new Word("break", Tag.BREAK));
-    this.reserve(new Word().True);
-    this.reserve(new Word().False);
-    this.reserve(new Type().Int);
-    this.reserve(new Type().Char);
-    this.reserve(new Type().Bool);
-    this.reserve(new Type().Float);
+    this.reserve(new Word.Word("if", Tag.IF));
+    this.reserve(new Word.Word("else", Tag.ELSE));
+    this.reserve(new Word.Word("while", Tag.WHILE));
+    this.reserve(new Word.Word("do", Tag.DO));
+    this.reserve(new Word.Word("break", Tag.BREAK));
+    this.reserve(Word.True);
+    this.reserve(Word.False);
+    this.reserve(Type.Int);
+    this.reserve(Type.Char);
+    this.reserve(Type.Bool);
+    this.reserve(Type.Float);
   }
   readch() {
-    this.peek = process.argv[2][this.index++];
+    if (!arguments.length) {
+      this.peek = process.argv[2][this.index++];
+    } else {
+      this.readch();
+      if (this.peek !== c) return false;
+      this.peek = "";
+      return true;
+    }
   }
-  readch(c) {
-    this.readch();
-    if (this.peek !== c) return false;
-    this.peek = "";
-    return true;
-  }
+  // readch(c) {
+  // }
   scan() {
     for (; ; this.readch()) {
       if (this.peek === "" || this.peek === "\t") continue;

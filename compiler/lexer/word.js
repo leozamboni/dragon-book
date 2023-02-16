@@ -1,7 +1,7 @@
 import { Token } from "./token.js";
 import { Tag } from "./tag.js";
 
-export class Word extends Token {
+class WordObj extends Token {
   lexeme = "";
   constructor(s, tag) {
     super(tag);
@@ -10,14 +10,18 @@ export class Word extends Token {
   toString() {
     return this.lexeme;
   }
-  and = new Word("&&", Tag.AND);
-  or = new Word("||", Tag.OR);
-  eq = new Word("==", Tag.EQ);
-  ne = new Word("!=", Tag.NE);
-  le = new Word("<=", Tag.LE);
-  ge = new Word(">=", Tag.GE);
-  minus = new Word("minus", Tag.MINUS);
-  True = new Word("true", Tag.TRUE);
-  False = new Word("false", Tag.FALSE);
-  temp = new Word("t", Tag.TEMP);
 }
+
+export const Word = {
+  Word: WordObj,
+  and: new WordObj("&&", Tag.AND),
+  or: new WordObj("||", Tag.OR),
+  eq: new WordObj("==", Tag.EQ),
+  ne: new WordObj("!=", Tag.NE),
+  le: new WordObj("<=", Tag.LE),
+  ge: new WordObj(">=", Tag.GE),
+  minus: new WordObj("minus", Tag.MINUS),
+  True: new WordObj("true", Tag.TRUE),
+  False: new WordObj("false", Tag.FALSE),
+  temp: new WordObj("t", Tag.TEMP),
+};

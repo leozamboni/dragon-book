@@ -1,4 +1,4 @@
-import { Expr } from "./expr";
+import { Expr } from "./expr.js";
 
 export class Op extends Expr {
   constructor() {}

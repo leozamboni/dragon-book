@@ -1,5 +1,5 @@
-import { Op } from "./op";
-import { Type } from "../symbols/type";
+import { Op } from "./op.js";
+import { Type } from "../symbols/type.js";
 
 export class Unary extends Op {
   expr;

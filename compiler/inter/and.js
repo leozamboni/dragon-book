@@ -1,4 +1,4 @@
-import { Logical } from "./logical";
+import { Logical } from "./logical.js";
 
 export class And extends Logical {
   constructor(tok, x1, x2) {

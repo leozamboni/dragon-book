@@ -1,4 +1,4 @@
-import { Tag } from "../lexer/tag";
+import { Tag } from "../lexer/tag.js";
 
 export class Array extends Type {
   of;

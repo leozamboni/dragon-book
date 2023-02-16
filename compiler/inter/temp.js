@@ -1,5 +1,5 @@
-import { Expr } from "./expr";
-import { Word } from "../lexer/word";
+import { Expr } from "./expr.js";
+import { Word } from "../lexer/word.js";
 
 export class Temp extends Expr {
   count = 0;

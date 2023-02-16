@@ -1,6 +1,6 @@
-import { Stmt } from "./stmt";
+import { Stmt } from "./stmt.js";
 
-export class Break extends Stmt {
+export class Break extends Stmt.Stmt {
   stmt;
   constructor() {
     if (new Stmt().Enclosing === null) this.error("unenclosed break");
