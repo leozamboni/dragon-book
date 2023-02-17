@@ -26,7 +26,7 @@ export class Lexer {
     this.reserve(Type.Bool);
     this.reserve(Type.Float);
   }
-  readch() {
+  readch(c) {
     if (!arguments.length) {
       this.peek = process.argv[2][this.index++];
     } else {
@@ -42,7 +42,6 @@ export class Lexer {
       else if (this.peek === "\n") this.line++;
       else break;
     }
-
     switch (this.peek) {
       case "&":
         if (this.readch("&")) return Word.and;

@@ -6,7 +6,7 @@ export class Access extends Op {
   array;
   index;
   constructor(a, i, p) {
-    super(new Word("[]", Tag.INDEX), p);
+    super(new Word.Word("[]", Tag.INDEX), p);
     this.array = a;
     this.index = i;
   }

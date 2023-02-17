@@ -1,7 +1,9 @@
 import { Expr } from "./expr.js";
 
 export class Op extends Expr {
-  constructor() {}
+  constructor() {
+    super();
+  }
   reduce() {
     const x = this.gen();
     const t = new Temp(this.type);

@@ -7,7 +7,6 @@ export let stmt = new Stmt.Stmt();
 class Main {
   constructor() {
     let lex = new Lexer();
-    console.log(lex);
     let parse = new Parser(lex);
     parse.program();
     console.log("\n");

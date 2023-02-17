@@ -5,6 +5,7 @@ export class While extends Stmt.Stmt {
   expr;
   stmt;
   constructor() {
+    super();
     this.expr = null;
     this.stmt = null;
   }

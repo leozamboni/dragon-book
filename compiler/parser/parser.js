@@ -20,6 +20,7 @@ import { Type } from "../symbols/type.js";
 import { Constants } from "../inter/constants.js";
 import { Token } from "../lexer/token.js";
 import { Access } from "../inter/access.js";
+import { Arith } from "../inter/arith.js";
 
 export class Parser {
   lex;
@@ -27,12 +28,12 @@ export class Parser {
   top = null;
   used = 0;
   constructor(l) {
-    this.top = new Map();
     this.lex = l;
     this.move();
   }
   move() {
     this.look = this.lex.scan();
+    // console.log(this.look);
   }
   error(s) {
     throw new Error("near line " + this.lex.line + ": " + s);
@@ -66,14 +67,14 @@ export class Parser {
       this.match(Tag.ID);
       this.match(";");
       let id = new Id(tok, p, this.used);
-      this.top.table.set(tok, id);
+      this.top.put(tok, id);
       this.used = this.used + p.width;
     }
   }
   type() {
     let p = this.look;
     this.match(Tag.BASIC);
-    if (this.look.Tag !== "[ ") return p;
+    if (this.look.tag !== "[") return p;
     else return this.dims(p);
   }
   dims(p) {
@@ -142,6 +143,7 @@ export class Parser {
   assign() {
     let stmt;
     let t = this.look;
+
     this.match(Tag.ID);
     let id = this.top.get(t);
     if (id === null) this.error(t.toString() + " undeclared");
@@ -200,7 +202,7 @@ export class Parser {
   expr() {
     let x = this.term();
     while (this.look.tag === "+" || this.look.tag === "-") {
-      let tok = look;
+      let tok = this.look;
       this.move();
       x = new Arith(tok, x, this.term());
     }
@@ -218,7 +220,7 @@ export class Parser {
   unary() {
     if (this.look.tag === "-") {
       this.move();
-      return new Unary(new Word().minus, this.unary());
+      return new Unary(Word.minus, this.unary());
     } else if (this.look.tag === "!") {
       let tok = this.look;
       this.move();
@@ -227,26 +229,26 @@ export class Parser {
   }
   factor() {
     let x = null;
-    switch (this.look.tag()) {
+    switch (this.look.tag) {
       case "(":
         this.move();
         x = this.bool();
         this.match(")");
         return x;
       case Tag.NUM:
-        x = new Constants(this.look, new Type().Int);
+        x = new Constants.Constants(this.look, Type.Int);
         this.move();
         return x;
       case Tag.REAL:
-        x = new Constants(this.look, new Type().Float);
+        x = new Constants.Constants(this.look, Type.Float);
         this.move();
         return x;
       case Tag.TRUE:
-        x = new Constants().True;
+        x = Constants.True;
         this.move();
         return x;
       case Tag.FALSE:
-        x = new Constants().False;
+        x = Constants.False;
         this.move();
         return x;
       default:
@@ -258,7 +260,7 @@ export class Parser {
         if (id === null) this.error(this.look.toString() + " undeclared");
         this.move();
         if (this.look.tag !== "[") return id;
-        else return this.offset();
+        else return this.offset(id);
     }
   }
   offset(a) {
@@ -267,8 +269,8 @@ export class Parser {
     this.match("[");
     i = this.bool();
     this.match("]");
-    // type = type.of;
-    w = new Constants(type.width);
+    type = type[1];
+    w = new Constants.Constants(type.width);
     t1 = new Arith(new Token("*"), i, w);
     loc = t1;
     while (this.look.tag === "[") {
@@ -276,7 +278,7 @@ export class Parser {
       i = this.bool();
       this.match("]");
       // type = type.of;
-      w = new Constants(type.width);
+      w = new Constants.Constants(type.width);
       t1 = new Arith(new Token("*"), i, w);
       t2 = new Arith(new Token("+"), i, w);
       loc = t2;
