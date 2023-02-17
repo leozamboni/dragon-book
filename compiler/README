@@ -1,1 +1,3 @@
-NOT FINISHED YET
+```
+node main.js "{ int a; }"
+```
