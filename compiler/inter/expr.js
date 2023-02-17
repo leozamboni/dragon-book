@@ -4,6 +4,7 @@ export class Expr extends Node {
   op;
   type;
   constructor(tok, p) {
+    super();
     this.op = tok;
     this.type = p;
   }

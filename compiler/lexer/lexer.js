@@ -36,32 +36,31 @@ export class Lexer {
       return true;
     }
   }
-  // readch(c) {
-  // }
   scan() {
     for (; ; this.readch()) {
-      if (this.peek === "" || this.peek === "\t") continue;
+      if (this.peek === "" || this.peek === "\t" || this.peek === " ") continue;
       else if (this.peek === "\n") this.line++;
       else break;
     }
+
     switch (this.peek) {
       case "&":
-        if (this.readch("&")) return new Word().and;
+        if (this.readch("&")) return Word.and;
         else return new Token("&");
       case "|":
-        if (this.readch("|")) return new Word().or;
+        if (this.readch("|")) return Word.or;
         else return new Token("|");
       case "=":
-        if (this.readch("=")) return new Word().eq;
+        if (this.readch("=")) return Word.eq;
         else return new Token("=");
       case "!":
-        if (this.readch("=")) return new Word().ne;
+        if (this.readch("=")) return Word.ne;
         else return new Token("!");
       case "<":
-        if (this.readch("=")) return new Word().le;
+        if (this.readch("=")) return Word.le;
         else return new Token("<");
       case ">":
-        if (this.readch("=")) return new Word().ge;
+        if (this.readch("=")) return Word.ge;
         else return new Token(">");
     }
     if (/^\d$/.test(this.peek)) {
@@ -81,7 +80,7 @@ export class Lexer {
       }
       return new Real(x);
     }
-    if (/[a-z]/i.test(this.peek)) {
+    if (this.peek && /[a-z]/i.test(this.peek)) {
       let b = "";
       do {
         b += this.peek;
@@ -90,7 +89,7 @@ export class Lexer {
       const s = b;
       let w = this.words.get(s);
       if (w) return w;
-      w = new Word(s, Tag.ID);
+      w = new Word.Word(s, Tag.ID);
       this.words.set(s, w);
       return w;
     }

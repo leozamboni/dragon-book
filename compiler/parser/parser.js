@@ -6,6 +6,7 @@ import { If } from "../inter/if.js";
 import { Else } from "../inter/else.js";
 import { While } from "../inter/while.js";
 import { Do } from "../inter/do.js";
+import { Stmt } from "../inter/stmt.js";
 import { Break } from "../inter/break.js";
 import { Set } from "../inter/set.js";
 import { SetElem } from "../inter/setElem.js";
@@ -62,9 +63,10 @@ export class Parser {
     while (this.look.tag === Tag.BASIC) {
       let p = this.type();
       let tok = this.look;
+      this.match(Tag.ID);
       this.match(";");
-      let id = new Id(tok, p, used);
-      this.top.set(tok, id);
+      let id = new Id(tok, p, this.used);
+      this.top.table.set(tok, id);
       this.used = this.used + p.width;
     }
   }
@@ -83,7 +85,7 @@ export class Parser {
     return new Array(tok.value, p);
   }
   stmts() {
-    if (this.look.tag === "}") return new Stmt().Null;
+    if (this.look.tag === "}") return Stmt.Null;
     else return new Seq(this.stmt(), this.stmts());
   }
   stmt() {
