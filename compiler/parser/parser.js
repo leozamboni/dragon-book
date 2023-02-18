@@ -1,26 +1,25 @@
-import { Tag } from "../lexer/tag.js";
-import { Env } from "../symbols/env.js";
-import { Id } from "../inter/id.js";
 import { stmt } from "../main.js";
-import { If } from "../inter/if.js";
-import { Else } from "../inter/else.js";
-import { While } from "../inter/while.js";
-import { Do } from "../inter/do.js";
-import { Stmt } from "../inter/stmt.js";
-import { Break } from "../inter/break.js";
-import { Set } from "../inter/set.js";
-import { SetElem } from "../inter/setElem.js";
-import { Or } from "../inter/or.js";
-import { And } from "../inter/and.js";
-import { Rel } from "../inter/rel.js";
-import { Not } from "../inter/not.js";
-import { Seq } from "../inter/seq.js";
-import { Word } from "../lexer/word.js";
-import { Type } from "../symbols/type.js";
-import { Constants } from "../inter/constants.js";
-import { Token } from "../lexer/token.js";
-import { Access } from "../inter/access.js";
-import { Arith } from "../inter/arith.js";
+import { Env, Type } from "../symbols/index.js";
+import { Tag, Word, Token } from "../lexer/index.js";
+import {
+  Arith,
+  Access,
+  Constants,
+  Seq,
+  Not,
+  Rel,
+  And,
+  Or,
+  SetElem,
+  Set,
+  Break,
+  Stmt,
+  Do,
+  While,
+  Else,
+  If,
+  Id,
+} from "../inter/index.js";
 
 export class Parser {
   lex;

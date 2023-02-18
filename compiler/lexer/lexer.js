@@ -1,9 +1,5 @@
-import { Num } from "./num.js";
-import { Real } from "./real.js";
-import { Tag } from "./tag.js";
-import { Token } from "./token.js";
-import { Type } from "../symbols/type.js";
-import { Word } from "./word.js";
+import { Word, Num, Real, Tag, Token } from "./index.js";
+import { Type } from "../symbols/index.js";
 
 export class Lexer {
   line = 1;

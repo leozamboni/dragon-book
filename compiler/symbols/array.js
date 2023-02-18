@@ -1,6 +1,7 @@
-import { Tag } from "../lexer/tag.js";
+import { Tag } from "../lexer/index.js";
+import { Type } from "../symbols/index.js";
 
-export class Array extends Type {
+export class Array extends Type.Type {
   of;
   size = 1;
   constructor(sz, p) {

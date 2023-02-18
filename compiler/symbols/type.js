@@ -1,5 +1,4 @@
-import { Tag } from "../lexer/tag.js";
-import { Word } from "../lexer/word.js";
+import { Tag, Word } from "../lexer/index.js";
 
 class TypeObj extends Word.Word {
   width = 0;

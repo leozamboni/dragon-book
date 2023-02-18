@@ -1,6 +1,6 @@
-import { Stmt } from "./inter/stmt.js";
-import { Lexer } from "./lexer/lexer.js";
-import { Parser } from "./parser/parser.js";
+import { Stmt } from "./inter/index.js";
+import { Lexer } from "./lexer/index.js";
+import { Parser } from "./parser/index.js";
 
 export let stmt = new Stmt.Stmt();
 
