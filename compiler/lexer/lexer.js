@@ -10,11 +10,11 @@ export class Lexer {
     this.words.set(w.lexeme, w);
   }
   constructor() {
-    this.reserve(new Word.Word("if", Tag.IF));
-    this.reserve(new Word.Word("else", Tag.ELSE));
-    this.reserve(new Word.Word("while", Tag.WHILE));
-    this.reserve(new Word.Word("do", Tag.DO));
-    this.reserve(new Word.Word("break", Tag.BREAK));
+    this.reserve(new Word("if", Tag.IF));
+    this.reserve(new Word("else", Tag.ELSE));
+    this.reserve(new Word("while", Tag.WHILE));
+    this.reserve(new Word("do", Tag.DO));
+    this.reserve(new Word("break", Tag.BREAK));
     this.reserve(Word.True);
     this.reserve(Word.False);
     this.reserve(Type.Int);
@@ -84,7 +84,7 @@ export class Lexer {
       const s = b;
       let w = this.words.get(s);
       if (w) return w;
-      w = new Word.Word(s, Tag.ID);
+      w = new Word(s, Tag.ID);
       this.words.set(s, w);
       return w;
     }

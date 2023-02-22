@@ -2,7 +2,7 @@ import { Stmt } from "./inter/index.js";
 import { Lexer } from "./lexer/index.js";
 import { Parser } from "./parser/index.js";
 
-export let stmt = new Stmt.Stmt();
+export let stmt = new Stmt();
 
 class Main {
   constructor() {

@@ -1,6 +1,6 @@
 import { Stmt } from "./stmt.js";
 
-export class Break extends Stmt.Stmt {
+export class Break extends Stmt {
   stmt;
   constructor() {
     super();

@@ -1,7 +1,7 @@
 import { Type } from "../symbols/type.js";
 import { Stmt } from "./stmt.js";
 
-export class Do extends Stmt.Stmt {
+export class Do extends Stmt {
   expr;
   stmt;
   constructor() {

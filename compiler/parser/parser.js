@@ -234,11 +234,11 @@ export class Parser {
         this.match(")");
         return x;
       case Tag.NUM:
-        x = new Constants.Constants(this.look, Type.Int);
+        x = new Constants(this.look, Type.Int);
         this.move();
         return x;
       case Tag.REAL:
-        x = new Constants.Constants(this.look, Type.Float);
+        x = new Constants(this.look, Type.Float);
         this.move();
         return x;
       case Tag.TRUE:
@@ -268,15 +268,14 @@ export class Parser {
     i = this.bool();
     this.match("]");
     type = type[1];
-    w = new Constants.Constants(type.width);
+    w = new Constants(type.width);
     t1 = new Arith(new Token("*"), i, w);
     loc = t1;
     while (this.look.tag === "[") {
       this.match("[");
       i = this.bool();
       this.match("]");
-      // type = type.of;
-      w = new Constants.Constants(type.width);
+      w = new Constants(type.width);
       t1 = new Arith(new Token("*"), i, w);
       t2 = new Arith(new Token("+"), i, w);
       loc = t2;

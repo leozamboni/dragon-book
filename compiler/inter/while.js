@@ -1,7 +1,7 @@
 import { Type } from "../symbols/type.js";
 import { Stmt } from "./stmt.js";
 
-export class While extends Stmt.Stmt {
+export class While extends Stmt {
   expr;
   stmt;
   constructor() {

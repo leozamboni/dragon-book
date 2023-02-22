@@ -1,7 +1,7 @@
 import { Type } from "../symbols/type.js";
 import { Stmt } from "./stmt.js";
 
-export class SetElem extends Stmt.Stmt {
+export class SetElem extends Stmt {
   array;
   index;
   expr;

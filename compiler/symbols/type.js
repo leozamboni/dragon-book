@@ -1,6 +1,6 @@
 import { Tag, Word } from "../lexer/index.js";
 
-class TypeObj extends Word.Word {
+class TypeObj extends Word {
   width = 0;
   constructor(s, tag, w) {
     super(s, tag);
