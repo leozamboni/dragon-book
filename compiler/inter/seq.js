@@ -4,12 +4,13 @@ export class Seq extends Stmt.Stmt {
   stmt1;
   stmt2;
   constructor(s1, s2) {
+    super();
     this.stmt1 = s1;
     this.stmt2 = s2;
   }
   gen(b, a) {
-    if (this.stmt1 === new Stmt().Null) this.stmt2.gen(b, a);
-    else if (this.stmt2 === new Stmt().Null) this.stmt1.gen(b, a);
+    if (this.stmt1 === Stmt.Null) this.stmt2.gen(b, a);
+    else if (this.stmt2 === Stmt.Null) this.stmt1.gen(b, a);
     else {
       let label = this.newlabel();
       this.stmt1.gen(b, label);
