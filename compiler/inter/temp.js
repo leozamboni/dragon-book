@@ -1,13 +1,12 @@
 import { Expr } from "./expr.js";
 import { Word } from "../lexer/word.js";
 
-let count = 0; // temporary adaptation for static variable
-
 export class Temp extends Expr {
+  static count = 0;
   number = 0;
   constructor(p) {
     super(Word.temp, p);
-    this.number = ++count;
+    this.number = ++Temp.count;
   }
   toString() {
     return "t" + this.number;
