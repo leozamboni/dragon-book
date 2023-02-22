@@ -1,3 +1,6 @@
 ```
- node main.js "$(cat test)"
+pnpm execute
+
+work:
+    node main.js "{ int a; int b; a=10; b=20; do a = b + 1; while (a < b); }"
 ```

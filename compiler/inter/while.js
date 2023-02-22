@@ -12,7 +12,7 @@ export class While extends Stmt.Stmt {
   init(x, s) {
     this.expr = x;
     this.stmt = s;
-    if (this.expr.type !== new Type().Bool)
+    if (this.expr.type !== Type.Bool)
       this.expr.error("boolean required in while");
   }
   gen(b, a) {

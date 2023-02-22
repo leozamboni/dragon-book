@@ -7,8 +7,7 @@ export class If extends Stmt.Stmt {
   constructor(x, s) {
     this.expr = x;
     this.stmt = x;
-    if (this.expr.type !== new Type().Bool)
-      this.expr.error("boolean required in if");
+    if (this.expr.type !== Type.Bool) this.expr.error("boolean required in if");
   }
   gen(b, a) {
     let label = this.newlabel();

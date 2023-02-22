@@ -8,7 +8,7 @@ export class Node {
   error(s) {
     throw new Error(`near line ${this.lexline}: ${s}`);
   }
-  labels;
+  labels = 0;
   newlabel() {
     return ++this.labels;
   }

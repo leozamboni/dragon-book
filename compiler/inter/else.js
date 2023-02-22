@@ -9,8 +9,7 @@ export class Else extends Stmt.Stmt {
     this.expr = x;
     this.stmt1 = s1;
     this.stmt2 = s2;
-    if (this.expr.type !== new Type().Bool)
-      this.expr.error("boolean required in if");
+    if (this.expr.type !== Type.Bool) this.expr.error("boolean required in if");
   }
   gen(b, a) {
     let label1 = this.newlabel();

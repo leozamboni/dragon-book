@@ -6,6 +6,7 @@ export class SetElem extends Stmt.Stmt {
   index;
   expr;
   constructor(x, y) {
+    super();
     this.array = x.array;
     this.index = x.index;
     this.expr = y;
@@ -14,7 +15,8 @@ export class SetElem extends Stmt.Stmt {
   check(p1, p2) {
     if (p1 instanceof Array || p2 instanceof Array) return null;
     else if (p1 === p2) return p2;
-    else if (new Type().numeric(p1) && new Type().numeric(p2)) return p2;
+    else if (new Type.Type().numeric(p1) && new Type.Type().numeric(p2))
+      return p2;
     else return null;
   }
   gen(b, a) {

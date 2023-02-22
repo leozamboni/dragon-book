@@ -32,7 +32,6 @@ export class Parser {
   }
   move() {
     this.look = this.lex.scan();
-    // console.log(this.look);
   }
   error(s) {
     throw new Error("near line " + this.lex.line + ": " + s);
@@ -93,7 +92,7 @@ export class Parser {
     switch (this.look.tag) {
       case ";":
         this.move();
-        return new Stmt().Null;
+        return Stmt.Null;
       case Tag.IF:
         this.match(Tag.IF);
         this.match("(");
@@ -127,6 +126,7 @@ export class Parser {
         x = this.bool();
         this.match(")");
         this.match(";");
+        donode.init(s1, x);
         stmt.Enclosing = savedStmt;
         return donode;
       case Tag.BREAK:
@@ -142,7 +142,6 @@ export class Parser {
   assign() {
     let stmt;
     let t = this.look;
-
     this.match(Tag.ID);
     let id = this.top.get(t);
     if (id === null) this.error(t.toString() + " undeclared");

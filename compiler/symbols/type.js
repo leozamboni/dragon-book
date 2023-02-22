@@ -6,7 +6,6 @@ class TypeObj extends Word.Word {
     super(s, tag);
     this.width = w;
   }
-
   numeric(p) {
     if (p === Type.Char || p === Type.Int || p === Type.Float) return true;
     else return false;

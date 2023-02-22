@@ -9,11 +9,10 @@ export class Do extends Stmt.Stmt {
     this.expr = null;
     this.stmt = null;
   }
-  init(x, s) {
+  init(s, x) {
     this.expr = x;
     this.stmt = s;
-    if (this.expr.type !== new Type().Bool)
-      this.expr.error("boolean required in do");
+    if (this.expr.type !== Type.Bool) this.expr.error("boolean required in do");
   }
   gen(b, a) {
     this.after = a;

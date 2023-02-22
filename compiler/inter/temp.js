@@ -5,7 +5,7 @@ export class Temp extends Expr {
   count = 0;
   number = 0;
   constructor(p) {
-    super(new Word().temp, p);
+    super(Word.temp, p);
     this.number = ++this.count;
   }
   toString() {

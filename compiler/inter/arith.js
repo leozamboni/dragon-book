@@ -12,7 +12,7 @@ export class Arith extends Op {
     if (this.type === null) this.error("type error");
   }
   gen() {
-    return new Arith(op, this.expr1.reduce(), this.expr2.reduce());
+    return new Arith(this.op, this.expr1.reduce(), this.expr2.reduce());
   }
   toString() {
     return (

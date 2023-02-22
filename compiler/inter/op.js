@@ -1,8 +1,8 @@
 import { Expr } from "./expr.js";
 
 export class Op extends Expr {
-  constructor() {
-    super();
+  constructor(tok, p) {
+    super(tok, p);
   }
   reduce() {
     const x = this.gen();
