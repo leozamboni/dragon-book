@@ -5,6 +5,7 @@ export class If extends Stmt.Stmt {
   expr;
   stmt;
   constructor(x, s) {
+    super();
     this.expr = x;
     this.stmt = x;
     if (this.expr.type !== Type.Bool) this.expr.error("boolean required in if");

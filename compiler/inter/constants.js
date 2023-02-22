@@ -12,8 +12,8 @@ class ConstantsObj extends Expr {
     }
   }
   jumping(t, f) {
-    if (this === True && t !== 0) this.emit("goto L" + t);
-    else if (this === this.False && f !== 0) this.emit("goto L" + f);
+    if (this === Constants.True && t !== 0) this.emit("goto L" + t);
+    else if (this === Constants.False && f !== 0) this.emit("goto L" + f);
   }
 }
 
