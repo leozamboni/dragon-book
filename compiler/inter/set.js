@@ -12,7 +12,7 @@ export class Set extends Stmt {
       this.error("type error");
   }
   check(p1, p2) {
-    if (new Type.Type().numeric(p1) && new Type.Type().numeric(p2)) return p2;
+    if (new Type().numeric(p1) && new Type().numeric(p2)) return p2;
     else if (p1 === Type.Bool && p2 === Type.Bool) return p2;
     else return null;
   }

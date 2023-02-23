@@ -1,7 +1,11 @@
 import { Tag, Word } from "../lexer/index.js";
 
-class TypeObj extends Word {
-  width = 0;
+export class Type extends Word {
+  static Int = new Type("int", Tag.BASIC, 4);
+  static Float = new Type("float", Tag.BASIC, 8);
+  static Char = new Type("char", Tag.BASIC, 1);
+  static Bool = new Type("bool", Tag.BASIC, 1);
+  static width = 0;
   constructor(s, tag, w) {
     super(s, tag);
     this.width = w;
@@ -17,11 +21,3 @@ class TypeObj extends Word {
     else return Type.Char;
   }
 }
-
-export const Type = {
-  Type: TypeObj,
-  Int: new TypeObj("int", Tag.BASIC, 4),
-  Float: new TypeObj("float", Tag.BASIC, 8),
-  Char: new TypeObj("char", Tag.BASIC, 1),
-  Bool: new TypeObj("bool", Tag.BASIC, 1),
-};
